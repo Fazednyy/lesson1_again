@@ -1,22 +1,14 @@
-let black = document.getElementById('black');
-let white = document.getElementById('white');
-let gray = document.getElementById('gray'); 
-let p = document.getElementById('text');
-
-let fn = black.onclick = function(){
-    p.style.color = 'white';
-    document.body.style.background = 'black';
+let text = document.getElementById('text');
+let buts = document.getElementsByName('bt');
+for (let i = 0; i < buts.length; i++) {
+buts[i].onclick = function () {
+let locStor = this.value;
+localStorage.setItem('textKey', locStor);
+document.body.style.backgroundColor = this.value;
 }
-let fn2 = white.onclick = function(){
-    p.style.color = 'black'
-    document.body.style.background = 'white';
-}
-let fn3 = gray.onclick = function(){
-    p.style.color = 'white'
-    document.body.style.background = 'gray';
+} ;
+window.onload = function () {
+let locVal = localStorage.getItem('textKey');
+document.body.style.backgroundColor = locVal;
 }
 
-localStorage.setItem('Color1', JSON.stringify(fn))
-localStorage.setItem('Color1', JSON.stringify(fn2))
-localStorage.setItem('Color1', JSON.stringify(fn3))
-// localStorage.setItem('Color1')
